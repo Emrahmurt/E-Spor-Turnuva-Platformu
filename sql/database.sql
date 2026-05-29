@@ -276,17 +276,17 @@ CREATE TABLE iletisim_mesajlari (
 -- =====================================================
 CREATE INDEX idx_kullanicilar_role ON kullanicilar(role);
 CREATE INDEX idx_kullanicilar_points ON kullanicilar(points DESC);
-CREATE INDEX idx_teams_game ON teams(game_id);
-CREATE INDEX idx_teams_points ON teams(points DESC);
-CREATE INDEX idx_tournaments_status ON tournaments(status);
-CREATE INDEX idx_tournaments_game ON tournaments(game_id);
-CREATE INDEX idx_tournaments_featured ON tournaments(is_featured);
-CREATE INDEX idx_matches_tournament ON matches(tournament_id);
-CREATE INDEX idx_matches_status ON matches(status);
-CREATE INDEX idx_matches_scheduled ON matches(scheduled_at);
-CREATE INDEX idx_news_category ON news(category);
-CREATE INDEX idx_news_featured ON news(is_featured);
-CREATE INDEX idx_news_published ON news(is_published);
+CREATE INDEX idx_takimlar_game ON takimlar(game_id);
+CREATE INDEX idx_takimlar_points ON takimlar(points DESC);
+CREATE INDEX idx_turnuvalar_status ON turnuvalar(status);
+CREATE INDEX idx_turnuvalar_game ON turnuvalar(game_id);
+CREATE INDEX idx_turnuvalar_featured ON turnuvalar(is_featured);
+CREATE INDEX idx_maclar_tournament ON maclar(tournament_id);
+CREATE INDEX idx_maclar_status ON maclar(status);
+CREATE INDEX idx_maclar_scheduled ON maclar(scheduled_at);
+CREATE INDEX idx_haberler_category ON haberler(category);
+CREATE INDEX idx_haberler_featured ON haberler(is_featured);
+CREATE INDEX idx_haberler_published ON haberler(is_published);
 CREATE INDEX idx_bildirimler_user ON bildirimler(user_id, is_read);
 CREATE INDEX idx_canli_guncellemeler_match ON canli_guncellemeler(match_id);
 CREATE INDEX idx_registrations_tournament ON turnuva_kayitlari(tournament_id);
