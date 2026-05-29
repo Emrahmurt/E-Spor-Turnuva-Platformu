@@ -2,9 +2,6 @@
 -- E-Spor Turnuva Platformu - Veritabanı Şeması
 -- =====================================================
 
-DROP DATABASE IF EXISTS espor_turnuva;
-CREATE DATABASE espor_turnuva CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE espor_turnuva;
 
 -- =====================================================
 -- 1. OYUNLAR
@@ -257,7 +254,7 @@ CREATE TABLE sayfa_goruntulemeleri (
     user_agent VARCHAR(500) DEFAULT NULL,
     user_id INT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+    FOREIGN KEY (user_id) REFERENCES kullanicilar(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
 -- =====================================================
@@ -277,8 +274,8 @@ CREATE TABLE iletisim_mesajlari (
 -- =====================================================
 -- INDEXLER (Performans)
 -- =====================================================
-CREATE INDEX idx_users_role ON users(role);
-CREATE INDEX idx_users_points ON users(points DESC);
+CREATE INDEX idx_kullanicilar_role ON kullanicilar(role);
+CREATE INDEX idx_kullanicilar_points ON kullanicilar(points DESC);
 CREATE INDEX idx_teams_game ON teams(game_id);
 CREATE INDEX idx_teams_points ON teams(points DESC);
 CREATE INDEX idx_tournaments_status ON tournaments(status);
