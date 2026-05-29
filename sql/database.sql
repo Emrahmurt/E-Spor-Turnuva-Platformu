@@ -15,7 +15,7 @@ CREATE TABLE oyunlar (
     description TEXT,
     is_active TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 2. KULLANICILAR
@@ -41,7 +41,7 @@ CREATE TABLE kullanicilar (
     last_login TIMESTAMP NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 3. TAKIMLAR
@@ -66,7 +66,7 @@ CREATE TABLE takimlar (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (game_id) REFERENCES oyunlar(id) ON DELETE CASCADE,
     FOREIGN KEY (captain_id) REFERENCES kullanicilar(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 4. TAKIM ÜYELERİ
@@ -81,7 +81,7 @@ CREATE TABLE takim_uyeleri (
     UNIQUE KEY unique_team_user (team_id, user_id),
     FOREIGN KEY (team_id) REFERENCES takimlar(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES kullanicilar(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 5. TURNUVALAR
@@ -115,7 +115,7 @@ CREATE TABLE turnuvalar (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (game_id) REFERENCES oyunlar(id) ON DELETE CASCADE,
     FOREIGN KEY (created_by) REFERENCES kullanicilar(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 6. TURNUVA KAYITLARI
@@ -134,7 +134,7 @@ CREATE TABLE turnuva_kayitlari (
     FOREIGN KEY (tournament_id) REFERENCES turnuvalar(id) ON DELETE CASCADE,
     FOREIGN KEY (team_id) REFERENCES takimlar(id) ON DELETE CASCADE,
     FOREIGN KEY (reviewed_by) REFERENCES kullanicilar(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 7. MAÇLAR
@@ -163,7 +163,7 @@ CREATE TABLE maclar (
     FOREIGN KEY (team1_id) REFERENCES takimlar(id) ON DELETE SET NULL,
     FOREIGN KEY (team2_id) REFERENCES takimlar(id) ON DELETE SET NULL,
     FOREIGN KEY (winner_id) REFERENCES takimlar(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 8. MAÇ ROUNDLARI (BO3/BO5 detay)
@@ -180,7 +180,7 @@ CREATE TABLE mac_roundlari (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (match_id) REFERENCES maclar(id) ON DELETE CASCADE,
     FOREIGN KEY (winner_id) REFERENCES takimlar(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 9. CANLI SKOR GÜNCELLEMELERİ
@@ -194,7 +194,7 @@ CREATE TABLE canli_guncellemeler (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (match_id) REFERENCES maclar(id) ON DELETE CASCADE,
     FOREIGN KEY (team_id) REFERENCES takimlar(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 10. HABERLER
@@ -215,7 +215,7 @@ CREATE TABLE haberler (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (author_id) REFERENCES kullanicilar(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 11. BİLDİRİMLER
@@ -230,7 +230,7 @@ CREATE TABLE bildirimler (
     is_read TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES kullanicilar(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 12. SİTE AYARLARI
@@ -242,7 +242,7 @@ CREATE TABLE ayarlar (
     setting_group VARCHAR(50) DEFAULT 'general',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 13. SAYFA GÖRÜNTÜLEMELERİ (İstatistik)
@@ -255,7 +255,7 @@ CREATE TABLE sayfa_goruntulemeleri (
     user_id INT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES kullanicilar(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- 14. İLETİŞİM MESAJLARI
@@ -269,7 +269,7 @@ CREATE TABLE iletisim_mesajlari (
     is_read TINYINT(1) DEFAULT 0,
     replied_at TIMESTAMP NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- INDEXLER (Performans)
