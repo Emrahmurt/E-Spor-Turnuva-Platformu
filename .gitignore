@@ -1,0 +1,50 @@
+# Local database configurations
+includes/config.php
+
+# IDEs and system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+.gemini/
+.agents/
+.tempmediaStorage/
+
+# Logs and cache
+*.log
+npm-debug.log*
+uploads/
+
+# Uploaded assets (keep folders, ignore custom uploads, keep default seed assets)
+assets/uploads/avatars/*
+!assets/uploads/avatars/.gitkeep
+!assets/uploads/avatars/avatar_*.jpg
+!assets/uploads/avatars/avatar_admin.jpg
+!assets/uploads/avatars/default-avatar.png
+
+assets/uploads/news/*
+!assets/uploads/news/.gitkeep
+!assets/uploads/news/*.png
+!assets/uploads/news/*.jpg
+
+assets/uploads/sponsors/*
+!assets/uploads/sponsors/.gitkeep
+!assets/uploads/sponsors/default-sponsor.png
+
+assets/uploads/team-logos/*
+!assets/uploads/team-logos/.gitkeep
+!assets/uploads/team-logos/default-team.png
+
+assets/uploads/tournament-banners/*
+!assets/uploads/tournament-banners/.gitkeep
+
+# Exclude temporary scratch files
+scratch/
+test_*.php
+check_*.php
+verify_*.php
+cleanup_*.php
+download_*.py
+scan_*.py
+search_*.py
+replace_*.py

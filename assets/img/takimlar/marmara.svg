@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient (Very Dark Metallic Blue) -->
+    <radialGradient id="bgGrad2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#02152e" />
+      <stop offset="70%" stop-color="#010a17" />
+      <stop offset="100%" stop-color="#000308" />
+    </radialGradient>
+    
+    <!-- Chrome/Silver Metallic Gradient -->
+    <linearGradient id="chromeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="25%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#f8fafc" />
+      <stop offset="75%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Ice Blue/Cyan Neon Gradient -->
+    <linearGradient id="cyanNeon" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0369a1" />
+      <stop offset="30%" stop-color="#0284c7" />
+      <stop offset="70%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Deep Ocean Gradient -->
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+
+    <!-- Cyan Glow Filter -->
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="4" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Ice/White Glow Filter -->
+    <filter id="iceGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Glass Reflection Gradient -->
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 3D Outer Plate / Shadow -->
+  <circle cx="250" cy="250" r="230" fill="#000" opacity="0.6" filter="url(#cyanGlow)" />
+
+  <!-- Background Base -->
+  <circle cx="250" cy="250" r="220" fill="url(#bgGrad2)" />
+
+  <!-- Outer Beveled Metallic Chrome Ring -->
+  <circle cx="250" cy="250" r="214" fill="none" stroke="url(#chromeGrad)" stroke-width="12" />
+  <circle cx="250" cy="250" r="220" fill="none" stroke="#000" stroke-width="2" />
+  <circle cx="250" cy="250" r="208" fill="none" stroke="#000" stroke-width="3" />
+
+  <!-- Inner Glowing Cyan Neon Ring -->
+  <circle cx="250" cy="250" r="198" fill="none" stroke="url(#cyanNeon)" stroke-width="6" filter="url(#cyanGlow)" />
+  <circle cx="250" cy="250" r="190" fill="none" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="15 8" />
+
+  <!-- Sonar/Radar Grid Background Pattern -->
+  <g opacity="0.1">
+    <path d="M 50 250 L 450 250 M 250 50 L 250 450" stroke="#00f2fe" stroke-width="2" />
+    <circle cx="250" cy="250" r="150" fill="none" stroke="#00f2fe" stroke-width="2" />
+    <circle cx="250" cy="250" r="100" fill="none" stroke="#00f2fe" stroke-width="2" />
+    <!-- Rotating Sweep Line -->
+    <path d="M 250 250 L 356 144" stroke="#00f2fe" stroke-width="3" />
+  </g>
+
+  <!-- Trident Crest Group -->
+  <g transform="translate(250, 240)">
+    <!-- Ocean Shield Background (3D Beveled Look) -->
+    <g filter="url(#cyanGlow)">
+      <!-- Outer Shield -->
+      <path d="M 0 -125 
+               C 70 -90, 130 -60, 140 30 
+               C 145 80, 110 135, 0 170 
+               C -110 135, -145 80, -140 30 
+               C -130 -60, -70 -90, 0 -125 Z" 
+            fill="#01162e" stroke="url(#cyanNeon)" stroke-width="5" />
+      
+      <!-- Inner Shield -->
+      <path d="M 0 -105 
+               C 55 -75, 105 -50, 115 25 
+               C 120 65, 90 110, 0 140 
+               C -90 110, -120 65, -115 25 
+               C -105 -50, -55 -75, 0 -105 Z" 
+            fill="#000914" stroke="#0284c7" stroke-width="2" />
+    </g>
+
+    <!-- Chrome Trident with 3D Layers -->
+    <g filter="url(#iceGlow)">
+      <!-- Wave Patterns in background of shield -->
+      <path d="M -90 50 Q -45 25, 0 50 T 90 50" fill="none" stroke="url(#cyanNeon)" stroke-width="3" opacity="0.4" />
+      <path d="M -80 75 Q -40 55, 0 75 T 80 75" fill="none" stroke="url(#cyanNeon)" stroke-width="2" opacity="0.3" />
+      <path d="M -70 100 Q -35 80, 0 100 T 70 100" fill="none" stroke="url(#cyanNeon)" stroke-width="1.5" opacity="0.2" />
+
+      <!-- Trident Base Shadow -->
+      <path d="M 0 -95
+               L 8 -35
+               L 25 -50
+               L 30 -20
+               C 35 10, 15 35, 0 35
+               C -15 35, -35 10, -30 -20
+               L -25 -50
+               L -8 -35
+               Z" 
+            fill="#0f172a" />
+
+      <!-- Trident Body (Metallic Chrome) -->
+      <path d="M 0 -90
+               L 6 -40
+               L 22 -55
+               L 26 -25
+               C 30 5, 12 30, 0 30
+               C -12 30, -30 5, -26 -25
+               L -22 -55
+               L -6 -40
+               Z" 
+            fill="url(#chromeGrad)" />
+
+      <!-- Trident Highlights -->
+      <path d="M 0 -85 L 3 -42 L 15 -50 L 18 -26 C 20 -2, 8 18, 0 18 Z" fill="#ffffff" opacity="0.7" />
+      
+      <!-- Trident Shaft -->
+      <path d="M -4 30 L 4 30 L 4 100 L -4 100 Z" fill="url(#chromeGrad)" />
+      <path d="M -2 30 L 2 30 L 2 100 L -2 100 Z" fill="#ffffff" opacity="0.6" />
+      
+      <!-- Trident Prongs Glow Rings -->
+      <path d="M -45 -10 C -60 -40, -30 -70, -10 -75" fill="none" stroke="url(#cyanNeon)" stroke-width="4" stroke-linecap="round" filter="url(#cyanGlow)" />
+      <path d="M 45 -10 C 60 -40, 30 -70, 10 -75" fill="none" stroke="url(#cyanNeon)" stroke-width="4" stroke-linecap="round" filter="url(#cyanGlow)" />
+      
+      <!-- Center Spear Tip Highlight -->
+      <polygon points="0,-95 4,-85 -4,-85" fill="#ffffff" filter="url(#iceGlow)" />
+    </g>
+  </g>
+
+  <!-- Specular 3D Glossy overlay (Glass Effect) -->
+  <path d="M 45 170 A 214 214 0 0 1 455 170 A 214 220 0 0 0 45 170 Z" fill="url(#glassGrad)" />
+</svg>

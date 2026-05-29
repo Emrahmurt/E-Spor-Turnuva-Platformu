@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient (Very Dark Metallic Green/Blue) -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0d1b15" />
+      <stop offset="70%" stop-color="#070c0a" />
+      <stop offset="100%" stop-color="#020403" />
+    </radialGradient>
+    
+    <!-- Gold Metallic Gradient -->
+    <linearGradient id="goldMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3d2300" />
+      <stop offset="20%" stop-color="#a37114" />
+      <stop offset="40%" stop-color="#ffd700" />
+      <stop offset="60%" stop-color="#fff8d2" />
+      <stop offset="80%" stop-color="#b8860b" />
+      <stop offset="100%" stop-color="#4a2c00" />
+    </linearGradient>
+
+    <!-- Green Neon/Cyber Gradient -->
+    <linearGradient id="greenNeon" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="30%" stop-color="#059669" />
+      <stop offset="70%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+
+    <!-- Emerald Glow Filter -->
+    <filter id="emeraldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="4" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Gold Glow Filter -->
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 1
+        0 0.8 0 0 0.8
+        0 0 0 0 0
+        0 0 0 1 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Glass Reflection Gradient -->
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 3D Outer Plate / Shadow -->
+  <circle cx="250" cy="250" r="230" fill="#000" opacity="0.6" filter="url(#emeraldGlow)" />
+
+  <!-- Background Base -->
+  <circle cx="250" cy="250" r="220" fill="url(#bgGrad)" />
+
+  <!-- Outer Beveled Metallic Gold Ring -->
+  <circle cx="250" cy="250" r="214" fill="none" stroke="url(#goldMetal)" stroke-width="12" />
+  <circle cx="250" cy="250" r="220" fill="none" stroke="#111" stroke-width="2" />
+  <circle cx="250" cy="250" r="208" fill="none" stroke="#000" stroke-width="3" />
+
+  <!-- Inner Glowing Emerald Neon Ring -->
+  <circle cx="250" cy="250" r="198" fill="none" stroke="url(#greenNeon)" stroke-width="6" filter="url(#emeraldGlow)" />
+  <circle cx="250" cy="250" r="190" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="15 8" />
+
+  <!-- Tech Grid Background Pattern -->
+  <g opacity="0.1">
+    <path d="M 50 250 L 450 250 M 250 50 L 250 450" stroke="#34d399" stroke-width="2" />
+    <circle cx="250" cy="250" r="150" fill="none" stroke="#34d399" stroke-width="2" />
+    <circle cx="250" cy="250" r="100" fill="none" stroke="#34d399" stroke-width="2" />
+    <!-- Diagonal Lines -->
+    <path d="M 108 108 L 392 392 M 108 392 L 392 108" stroke="#34d399" stroke-width="2" />
+  </g>
+
+  <!-- Dragon Crest Group -->
+  <g transform="translate(250, 240)">
+    <!-- Dragon Wings / Shield Background (3D Beveled Look) -->
+    <g filter="url(#emeraldGlow)">
+      <!-- Outer Wing Flanges -->
+      <path d="M 0 -130 
+               C 80 -90, 140 -50, 150 40 
+               C 155 90, 110 145, 0 180 
+               C -110 145, -155 90, -150 40 
+               C -140 -50, -80 -90, 0 -130 Z" 
+            fill="#052e21" stroke="url(#greenNeon)" stroke-width="5" />
+      
+      <!-- Inner Wing Panels -->
+      <path d="M 0 -105 
+               C 60 -70, 110 -35, 120 30 
+               C 125 70, 90 115, 0 145 
+               C -90 115, -125 70, -120 30 
+               C -110 -35, -60 -70, 0 -105 Z" 
+            fill="#021c14" stroke="#047857" stroke-width="2" />
+    </g>
+
+    <!-- Gold Dragon Silhouette with 3D Layers -->
+    <g filter="url(#goldGlow)">
+      <!-- Dragon Back Neck and Head Base -->
+      <path d="M 0 -80
+               C 35 -60, 60 -20, 60 30
+               C 60 70, 35 90, 0 110
+               C -35 90, -60 70, -60 30
+               C -60 -20, -35 -60, 0 -80 Z" 
+            fill="#5c3a00" />
+
+      <!-- Dragon Head Highlights (Inner Gold Layer) -->
+      <path d="M 0 -60
+               C 25 -45, 45 -15, 45 25
+               C 45 55, 25 70, 0 85
+               C -25 70, -45 55, -45 25
+               C -45 -15, -25 -45, 0 -60 Z" 
+            fill="url(#goldMetal)" />
+
+      <!-- Detailed Face Plate and Horns -->
+      <!-- Large Horns -->
+      <path d="M 0 -80 C 15 -105, 35 -125, 55 -135 C 40 -110, 25 -95, 0 -80 Z" fill="url(#goldMetal)" />
+      <path d="M 0 -80 C -15 -105, -35 -125, -55 -135 C -40 -110, -25 -95, 0 -80 Z" fill="url(#goldMetal)" />
+      
+      <!-- Small Horns -->
+      <path d="M 20 -60 C 35 -75, 55 -85, 65 -90 C 50 -80, 35 -70, 20 -60 Z" fill="url(#goldMetal)" />
+      <path d="M -20 -60 C -35 -75, -55 -85, -65 -90 C -50 -80, -35 -70, -20 -60 Z" fill="url(#goldMetal)" />
+
+      <!-- Dragon Snout / Jaw -->
+      <path d="M 0 -20 
+               C 15 -20, 25 -5, 25 15 
+               C 25 35, 15 45, 0 55 
+               C -15 45, -25 35, -25 15 
+               C -25 -5, -15 -20, 0 -20 Z" 
+            fill="#2d1700" />
+            
+      <!-- Glowing Fire / Energy Core in mouth -->
+      <path d="M 0 5 C 10 5, 15 15, 15 25 C 15 35, 10 40, 0 45 C -10 40, -15 35, -15 25 C -15 15, -10 5, 0 5 Z" fill="#fff" filter="url(#goldGlow)" />
+      <path d="M 0 12 C 5 12, 8 18, 8 25 C 8 32, 5 35, 0 38 C -5 38, -8 32, -8 25 C -8 18, -5 12, 0 12 Z" fill="#ffeb3b" />
+
+      <!-- Spikes / Scales along side -->
+      <path d="M 45 10 L 60 15 L 48 25" fill="url(#goldMetal)" />
+      <path d="M -45 10 L -60 15 L -48 25" fill="url(#goldMetal)" />
+      <path d="M 42 35 L 55 42 L 43 50" fill="url(#goldMetal)" />
+      <path d="M -42 35 L -55 42 L -43 50" fill="url(#goldMetal)" />
+
+      <!-- Glowing Red/Orange Eyes -->
+      <polygon points="-15,0 -5,2 -8,7" fill="#ff3d00" filter="url(#goldGlow)" />
+      <polygon points="-14,1 -7,2 -9,5" fill="#fff" />
+      
+      <polygon points="15,0 5,2 8,7" fill="#ff3d00" filter="url(#goldGlow)" />
+      <polygon points="14,1 7,2 9,5" fill="#fff" />
+    </g>
+  </g>
+
+  <!-- Specular 3D Glossy overlay (Glass Effect) -->
+  <path d="M 45 170 A 214 214 0 0 1 455 170 A 214 220 0 0 0 45 170 Z" fill="url(#glassGrad)" />
+</svg>

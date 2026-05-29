@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="pad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#11111d"/>
+    </linearGradient>
+  </defs>
+  <!-- Border card to look clean in white browser tab -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- Gamepad body -->
+  <rect x="12" y="22" width="40" height="22" rx="11" fill="url(#pad)"/>
+  <!-- D-pad horizontal -->
+  <rect x="19" y="30" width="12" height="4" rx="1" fill="#ffffff"/>
+  <!-- D-pad vertical -->
+  <rect x="23" y="26" width="4" height="12" rx="1" fill="#ffffff"/>
+  <!-- Buttons -->
+  <circle cx="39" cy="29" r="2.5" fill="#ffffff"/>
+  <circle cx="45" cy="33" r="2.5" fill="#ffffff"/>
+  <!-- Accent line -->
+  <rect x="22" y="48" width="20" height="2" rx="1" fill="#6c5ce7" opacity="0.9"/>
+</svg>

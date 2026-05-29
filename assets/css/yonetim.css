@@ -1,0 +1,1214 @@
+/* =====================================================
+   YÖNETİM PANELİ - ADMIN CSS
+   Koyu tema, sidebar layout
+   ===================================================== */
+
+/* =====================================================
+   CSS DEĞİŞKENLERİ (Admin)
+   ===================================================== */
+:root {
+    --sidebar-width: 260px;
+    --topbar-height: 60px;
+    --admin-bg: #0a0a0f;
+    --admin-sidebar-bg: #0e0e16;
+    --admin-topbar-bg: #12121a;
+    --admin-card-bg: #16161f;
+    --admin-surface: #1a1a2e;
+    --admin-input-bg: #14141e;
+    --admin-border: rgba(108, 92, 231, 0.15);
+    --admin-border-light: rgba(255, 255, 255, 0.06);
+    --accent: #6c5ce7;
+    --accent-hover: #7c6ef7;
+    --accent-light: rgba(108, 92, 231, 0.15);
+    --accent-glow: rgba(108, 92, 231, 0.4);
+    --neon: #00f5d4;
+    --neon-light: rgba(0, 245, 212, 0.15);
+    --neon-glow: rgba(0, 245, 212, 0.4);
+    --success: #00c853;
+    --warning: #ffab00;
+    --danger: #ff5252;
+    --info: #448aff;
+    --live: #ff1744;
+    --text-primary: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --text-white: #ffffff;
+    --gold: #ffd93d;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+}
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--admin-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 14px;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+ul, ol { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-white);
+    letter-spacing: 0.02em;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--text-white);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--admin-bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+.admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background: var(--admin-sidebar-bg);
+    border-right: 1px solid var(--admin-border);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sidebar-logo i {
+    font-size: 1.5rem;
+    color: var(--accent);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.sidebar-logo .logo-vurgu {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon-glow);
+}
+
+.sidebar-etiket {
+    padding: 16px 24px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 8px 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-bottom: 2px;
+    position: relative;
+}
+
+.sidebar-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.sidebar-link:hover {
+    color: var(--text-white);
+    background: var(--accent-light);
+}
+
+.sidebar-link.aktif {
+    color: var(--text-white);
+    background: linear-gradient(135deg, var(--accent-light), rgba(108, 92, 231, 0.25));
+    border-left: 3px solid var(--accent);
+}
+
+.sidebar-link.aktif i {
+    color: var(--accent);
+}
+
+.sidebar-link .badge-mini {
+    margin-left: auto;
+    background: var(--accent);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.sidebar-alt {
+    padding: 16px 24px;
+    border-top: 1px solid var(--admin-border);
+}
+
+.sidebar-siteye-don {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--text-secondary);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    transition: var(--transition);
+    justify-content: center;
+}
+
+.sidebar-siteye-don:hover {
+    color: var(--neon);
+    border-color: var(--neon);
+    background: var(--neon-light);
+}
+
+/* =====================================================
+   TOPBAR
+   ===================================================== */
+.admin-topbar {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: var(--topbar-height);
+    background: var(--admin-topbar-bg);
+    border-bottom: 1px solid var(--admin-border);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.topbar-sol {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-sol h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.topbar-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.topbar-breadcrumb a {
+    color: var(--text-secondary);
+}
+
+.topbar-breadcrumb a:hover {
+    color: var(--accent);
+}
+
+.topbar-breadcrumb .sep {
+    color: var(--text-muted);
+}
+
+.topbar-sag {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-admin-bilgi {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-xl);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.topbar-admin-bilgi img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.topbar-admin-bilgi strong {
+    color: var(--text-white);
+}
+
+.topbar-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.topbar-btn:hover {
+    color: var(--text-white);
+    background: var(--accent-light);
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+.admin-icerik {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--topbar-height);
+    padding: 24px;
+    min-height: calc(100vh - var(--topbar-height));
+}
+
+/* =====================================================
+   DASHBOARD STAT CARDS
+   ===================================================== */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.stat-kart {
+    background: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.stat-kart::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.stat-kart.mor::before { background: linear-gradient(90deg, var(--accent), #8b5cf6); }
+.stat-kart.yesil::before { background: linear-gradient(90deg, var(--success), #00e676); }
+.stat-kart.mavi::before { background: linear-gradient(90deg, var(--info), #2979ff); }
+.stat-kart.turuncu::before { background: linear-gradient(90deg, var(--warning), #ff6d00); }
+.stat-kart.kirmizi::before { background: linear-gradient(90deg, var(--danger), #ff1744); }
+.stat-kart.neon::before { background: linear-gradient(90deg, var(--neon), #00d4aa); }
+
+.stat-kart:hover {
+    transform: translateY(-2px);
+    border-color: rgba(108, 92, 231, 0.3);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-kart-ust {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.stat-kart-bilgi h4 {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-kart-bilgi .sayi {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--text-white);
+    line-height: 1;
+}
+
+.stat-kart-ikon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.stat-kart.mor .stat-kart-ikon { background: var(--accent-light); color: var(--accent); }
+.stat-kart.yesil .stat-kart-ikon { background: rgba(0, 200, 83, 0.15); color: var(--success); }
+.stat-kart.mavi .stat-kart-ikon { background: rgba(68, 138, 255, 0.15); color: var(--info); }
+.stat-kart.turuncu .stat-kart-ikon { background: rgba(255, 171, 0, 0.15); color: var(--warning); }
+.stat-kart.kirmizi .stat-kart-ikon { background: rgba(255, 82, 82, 0.15); color: var(--danger); }
+.stat-kart.neon .stat-kart-ikon { background: var(--neon-light); color: var(--neon); }
+
+.stat-kart-alt {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-kart-alt .artis {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.stat-kart-alt .azalis {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+/* =====================================================
+   ADMIN KARTLARI
+   ===================================================== */
+.admin-kart {
+    background: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.admin-kart-baslik {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-kart-baslik h3 {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-kart-baslik h3 i {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.admin-kart-icerik {
+    padding: 20px;
+}
+
+.admin-kart-icerik.p-0 {
+    padding: 0;
+}
+
+/* =====================================================
+   TABLOLAR
+   ===================================================== */
+.admin-tablo {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-tablo thead th {
+    background: var(--admin-surface);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--admin-border);
+    white-space: nowrap;
+}
+
+.admin-tablo tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--admin-border-light);
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.admin-tablo tbody tr {
+    transition: var(--transition-fast);
+}
+
+.admin-tablo tbody tr:hover {
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.admin-tablo tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =====================================================
+   BADGES
+   ===================================================== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.badge-primary { background: var(--accent-light); color: var(--accent); }
+.badge-success { background: rgba(0, 200, 83, 0.15); color: var(--success); }
+.badge-warning { background: rgba(255, 171, 0, 0.15); color: var(--warning); }
+.badge-danger { background: rgba(255, 82, 82, 0.15); color: var(--danger); }
+.badge-info { background: rgba(68, 138, 255, 0.15); color: var(--info); }
+.badge-secondary { background: rgba(139, 139, 158, 0.15); color: var(--text-secondary); }
+.badge-live {
+    background: rgba(255, 23, 68, 0.15);
+    color: var(--live);
+    animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* =====================================================
+   BUTONLAR (Admin)
+   ===================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-neon {
+    background: linear-gradient(135deg, var(--neon), #00d4aa);
+    color: var(--admin-bg);
+    box-shadow: 0 4px 15px var(--neon-glow);
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--admin-border);
+    color: var(--text-primary);
+}
+.btn-ghost:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--text-white);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), #ff1744);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success), #00e676);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--warning), #ff6d00);
+    color: #1a1a1a;
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.72rem;
+}
+
+.btn-xs {
+    padding: 4px 10px;
+    font-size: 0.68rem;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+/* =====================================================
+   FORM ELEMENTLERİ
+   ===================================================== */
+.form-grup {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.form-label .zorunlu {
+    color: var(--danger);
+    margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--admin-input-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    transition: var(--transition);
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b8b9e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.form-select option {
+    background: var(--admin-card-bg);
+    color: var(--text-primary);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-satir {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.form-satir-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.form-ipucu {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* =====================================================
+   FİLTRE BAR
+   ===================================================== */
+.filtre-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filtre-bar .form-input,
+.filtre-bar .form-select {
+    width: auto;
+    min-width: 180px;
+}
+
+.filtre-bar .filtre-arama {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* =====================================================
+   ALERT / FLASH
+   ===================================================== */
+.alert {
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.alert-success {
+    background: rgba(0, 200, 83, 0.12);
+    border: 1px solid rgba(0, 200, 83, 0.3);
+    color: var(--success);
+}
+
+.alert-error {
+    background: rgba(255, 82, 82, 0.12);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    color: var(--danger);
+}
+
+.alert-warning {
+    background: rgba(255, 171, 0, 0.12);
+    border: 1px solid rgba(255, 171, 0, 0.3);
+    color: var(--warning);
+}
+
+.alert-info {
+    background: rgba(68, 138, 255, 0.12);
+    border: 1px solid rgba(68, 138, 255, 0.3);
+    color: var(--info);
+}
+
+.alert-kapat {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.alert-kapat:hover { opacity: 1; }
+
+/* =====================================================
+   SON KAYITLAR LİSTESİ
+   ===================================================== */
+.son-kayit-liste {
+    list-style: none;
+}
+
+.son-kayit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--admin-border-light);
+}
+
+.son-kayit-item:last-child {
+    border-bottom: none;
+}
+
+.son-kayit-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--admin-border);
+}
+
+.son-kayit-bilgi {
+    flex: 1;
+}
+
+.son-kayit-bilgi strong {
+    color: var(--text-white);
+    font-size: 0.85rem;
+}
+
+.son-kayit-bilgi span {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.son-kayit-tarih {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* =====================================================
+   HIZLI AKSIYONLAR
+   ===================================================== */
+.hizli-aksiyon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.hizli-aksiyon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.hizli-aksiyon:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--text-white);
+}
+
+.hizli-aksiyon i {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.hizli-aksiyon.mor i { background: var(--accent-light); color: var(--accent); }
+.hizli-aksiyon.yesil i { background: rgba(0, 200, 83, 0.15); color: var(--success); }
+.hizli-aksiyon.mavi i { background: rgba(68, 138, 255, 0.15); color: var(--info); }
+.hizli-aksiyon.turuncu i { background: rgba(255, 171, 0, 0.15); color: var(--warning); }
+
+/* =====================================================
+   GRAFİK ALANI (Placeholder)
+   ===================================================== */
+.grafik-placeholder {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--admin-surface);
+    border: 2px dashed var(--admin-border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grafik-placeholder i {
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+/* =====================================================
+   DASHBOARD GRID
+   ===================================================== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.dashboard-tam {
+    grid-column: 1 / -1;
+}
+
+/* =====================================================
+   ROUND GROUPS (Maç Yönetimi)
+   ===================================================== */
+.round-grup {
+    margin-bottom: 24px;
+}
+
+.round-baslik {
+    font-size: 1rem;
+    color: var(--text-white);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.round-baslik i {
+    color: var(--accent);
+}
+
+.mac-kart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-light);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    transition: var(--transition);
+}
+
+.mac-kart:hover {
+    border-color: var(--accent);
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.mac-takimlar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.mac-takim {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    min-width: 140px;
+}
+
+.mac-takim.kazanan {
+    color: var(--success);
+}
+
+.mac-skor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.mac-skor .tire {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.mac-detay {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* =====================================================
+   INLINE FORM (Oyun ekleme vb.)
+   ===================================================== */
+.inline-form {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    padding: 16px 20px;
+    background: var(--admin-surface);
+    border-top: 1px solid var(--admin-border);
+}
+
+.inline-form .form-grup {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.inline-form .form-label {
+    margin-bottom: 4px;
+}
+
+/* =====================================================
+   TOGGLE SWITCH
+   ===================================================== */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 22px;
+    transition: var(--transition);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.toggle input:checked + .toggle-slider {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(18px);
+    background: white;
+}
+
+/* =====================================================
+   SAYFALAMA
+   ===================================================== */
+.sayfalama {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+    padding: 16px 0;
+}
+
+.sayfa-btn {
+    padding: 8px 14px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.sayfa-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-white);
+}
+
+.sayfa-btn.aktif {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* =====================================================
+   BOŞ DURUM
+   ===================================================== */
+.bos-durum {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+}
+
+.bos-durum i {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+    display: block;
+}
+
+.bos-durum p {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+/* =====================================================
+   MODAL (Confirm)
+   ===================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.acik {
+    display: flex;
+}
+
+.modal-kutu {
+    background: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    max-width: 420px;
+    width: 90%;
+}
+
+.modal-kutu h3 {
+    margin-bottom: 12px;
+}
+
+.modal-kutu p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.modal-butonlar {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1200px) {
+    .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+    .admin-topbar {
+        left: 0;
+    }
+    .admin-icerik {
+        margin-left: 0;
+    }
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-satir,
+    .form-satir-3 {
+        grid-template-columns: 1fr;
+    }
+    .filtre-bar {
+        flex-direction: column;
+    }
+    .filtre-bar .form-input,
+    .filtre-bar .form-select {
+        width: 100%;
+    }
+}

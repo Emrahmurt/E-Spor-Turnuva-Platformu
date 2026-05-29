@@ -1,0 +1,54 @@
+# E-Spor Turnuva Platformu
+# Güvenlik ve URL yönlendirme kuralları
+
+# Karakter seti
+AddDefaultCharset UTF-8
+
+# Dizin listelemeyi kapat
+Options -Indexes
+
+# Hassas dosyaları engelle
+<FilesMatch "\.(sql|log|env|ini|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# includes klasörüne erişimi engelle
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+    RewriteRule ^sql/ - [F,L]
+</IfModule>
+
+# Güvenlik başlıkları
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# GZIP sıkıştırma
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Tarayıcı önbellekleme
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType font/woff2 "access plus 1 month"
+</IfModule>
+
+# PHP ayarları
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 30
+    php_value session.cookie_httponly 1
+</IfModule>
